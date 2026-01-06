@@ -1,5 +1,10 @@
 # Claude Code CI Setup
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub release](https://img.shields.io/github/v/release/freedom07/setup-cc-gitlab)](https://github.com/freedom07/setup-cc-gitlab/releases)
+[![Shell Script](https://img.shields.io/badge/Shell-Bash-green.svg)](https://www.gnu.org/software/bash/)
+[![GitLab CI](https://img.shields.io/badge/CI%2FCD-GitLab-orange.svg)](https://about.gitlab.com/stages-devops-lifecycle/continuous-integration/)
+
 Setup [Claude Code](https://code.claude.com) for your CI/CD pipeline with a single command.
 
 ## Quick Start
@@ -224,6 +229,10 @@ If automatic variable setup fails, add variables manually:
 - [Claude Code GitLab CI/CD](https://code.claude.com/docs/gitlab-ci-cd)
 - [Claude Code Documentation](https://code.claude.com/docs)
 
+## Contributing
+
+Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) before submitting a Pull Request.
+
 ## License
 
-MIT
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

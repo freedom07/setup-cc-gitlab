@@ -17,7 +17,7 @@ curl -fsSL https://raw.githubusercontent.com/freedom07/setup-cc-gitlab/main/setu
 ```bash
 # Clone the repository
 git clone https://github.com/freedom07/setup-cc-gitlab.git
-cd cc-ci-setup
+cd setup-cc-gitlab
 
 # Run setup in your project directory
 ./setup.sh --platform gitlab --api-key "sk-ant-xxx"

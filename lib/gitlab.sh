@@ -168,8 +168,13 @@ merge_gitlab_ci() {
 
         log success "Merged claude job into $ci_file"
     else
-        # Create new .gitlab-ci.yml
-        echo "$claude_job" > "$ci_file"
+        # Create new .gitlab-ci.yml with stages header
+        {
+            echo "stages:"
+            echo "  - ai"
+            echo ""
+            echo "$claude_job"
+        } > "$ci_file"
         log success "Created new $ci_file"
     fi
 }

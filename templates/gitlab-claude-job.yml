@@ -1,8 +1,6 @@
 # Claude Code CI/CD Job
 # Documentation: https://code.claude.com/docs/gitlab-ci-cd
-
-stages:
-  - ai
+# Note: stages are managed separately to preserve existing stages
 
 claude:
   stage: ai

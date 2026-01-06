@@ -10,11 +10,13 @@
 #   ./setup.sh --platform gitlab --provider anthropic --api-key "sk-ant-xxx"
 #
 
-set -euo pipefail
+set -eo pipefail
 
 # Script directory detection (works for both local and curl | bash)
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+# When piped through curl, BASH_SOURCE is empty
+if [[ -n "${BASH_SOURCE[0]:-}" ]] && [[ -f "${BASH_SOURCE[0]}" ]]; then
     SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+    DOWNLOAD_LIBS=false
 else
     # When piped through curl, create temp directory and download libs
     SCRIPT_DIR="$(mktemp -d)"

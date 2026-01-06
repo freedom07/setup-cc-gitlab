@@ -1,0 +1,33 @@
+# Claude Code CI/CD Job
+# Documentation: https://code.claude.com/docs/gitlab-ci-cd
+
+stages:
+  - ai
+
+claude:
+  stage: ai
+  image: node:24-alpine3.21
+  rules:
+    # Trigger on web/API requests (manual or webhook)
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+    # Trigger on merge request events
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    # Optional: Trigger on push to specific branches
+    # - if: '$CI_COMMIT_BRANCH == "main"'
+  variables:
+    GIT_STRATEGY: fetch
+  before_script:
+    - apk update
+    - apk add --no-cache git curl bash
+    - npm install -g @anthropic-ai/claude-code
+  script:
+    # Start GitLab MCP server if available
+    - /bin/gitlab-mcp-server || true
+    # Run Claude with the provided input or default prompt
+    - |
+      claude \
+        -p "${AI_FLOW_INPUT:-'Review this MR and implement the requested changes'}" \
+        --permission-mode acceptEdits \
+        --allowedTools "Bash(*) Read(*) Edit(*) Write(*) mcp__gitlab" \
+        --debug
+  # Claude Code reads ANTHROPIC_API_KEY from CI/CD variables automatically
